@@ -31,14 +31,13 @@ void funcaos(int key, jogador_t *hero, int mapa[LINHA][COLUNA]); // função q s
 
 int main(void)
 {
-    int *ptr = (int *)malloc(1* sizeof(int));
+    int *ptr = (int *)malloc(1 * sizeof(int)); // alocação na gambiarra
     if (ptr == NULL)
     {
-       printf("Erro ao alocar memoria");
+        printf("Erro ao alocar memoria");
     }
-    printf("Digite um numero de 1 a 40\n");
-    scanf("%d", ptr);
-   system("cls");// limpa a tela 
+
+    system("cls"); // limpa a tela
     jogador_t hero;
     // variaveis das  posiçoes iniciais, pontos e sau // sao os parametros da funcao monta_mapa
     hero.linha = 1;  // Posição inicial na linha
@@ -83,14 +82,15 @@ int main(void)
     printf("\n");
     printf("      Digite o numero corespondente:\n");
     printf("\n");
-    printf("      1: Comecar novo jogo.\n      2: Como jogar.\n      3: Ver recordes.\n"); 
+    printf("      1: Comecar novo jogo.\n      2: Como jogar.\n      3: Ver recordes.\n");
     printf("-------------------------------------------\n");
     scanf("%d", &opcoes);
-   
 
     switch (opcoes)
     {
     case 1:
+        printf("Digite um numero de 1 a 40\n");
+        scanf("%d", ptr);
         printf("\n");
         printf("\n");
         printf("\n");
@@ -297,16 +297,16 @@ int main(void)
             monta_mapa(hero.linha, hero.coluna); // remonta o mapa com valor atualizado
 
         } //           wihlle final nivel5
-        system("cls");//limpa a tela 
+        system("cls"); // limpa a tela
 
         clock_t fim = clock();                                          // para cornometro
         double tempo_total = ((double)(fim - inicio)) / CLOCKS_PER_SEC; // CLOCKS_PER_SEC indica quantos "clocks" correspondem a um segundo
         int pontos_total;
-        pontos_total = ((hero.pontos + *ptr) - tempo_total) + 15 ;
+        pontos_total = ((hero.pontos + *ptr) - tempo_total) + 15;// 15 valor fixo para pontuação 
         printf("-----------------------\n");
         printf("PARABENS\n");
         printf("Voce chegou no final\n");
-        free(ptr); // libera a alocação dinamica 
+        free(ptr); // libera a alocação dinamica
 
         FILE *records = fopen("records.dat", "ab"); // abre o arquivo bin records
 
@@ -336,7 +336,7 @@ int main(void)
         break;
 
     case 2:
-    system("cls");// limpa a tela
+        system("cls"); //           limpa a tela
         printf("\n");
         printf("\n");
         printf("\n");
@@ -345,11 +345,13 @@ int main(void)
         printf("Ultilize 'w''a's'd' para se mover!\n");
         printf("Sobre  o mapa:\n");
         printf("Voce equivale a: $\n");
-        printf("Ponotos equivale a: *\n");
+        printf("Ponotos equivale a: +\n");
         printf("Saida equivale a: =\n");
         printf("\n");
         printf("\n");
         printf("\n");
+        printf("Na tela principal voce pode comecar um novo jogo pressionando 1");
+        printf("Na tela principal voce pode acessar as pontuaçoes anteriores pressionando 3");
         break;
 
     case 3:
@@ -504,4 +506,4 @@ void funcaod(int key, jogador_t *hero, int mapa[LINHA][COLUNA])
         }
     }
 }
-/// 500 linhas feitas apenas pelo Gustavo R Brito, com o auxilio do Chat GPT e chats do Dicord com ajuda de intusiastas da programação... 
+/// 500 linhas feitas apenas pelo Gustavo R Brito, com o auxilio do Chat GPT e chats do Dicord com ajuda de intusiastas da programação...
